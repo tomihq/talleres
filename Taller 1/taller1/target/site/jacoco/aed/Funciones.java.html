@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Funciones.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">labo1</a> &gt; <a href="index.source.html" class="el_package">aed</a> &gt; <span class="el_source">Funciones.java</span></div><h1>Funciones.java</h1><pre class="source lang-java linenums">package aed;
+
+<span class="fc" id="L3">class Funciones {</span>
+    int cuadrado(int x) {
+<span class="fc" id="L5">        return x*x;</span>
+    }
+
+    double distancia(double x, double y) {
+<span class="fc" id="L9">        return Math.sqrt((x*x) + (y*y));</span>
+    }
+
+    boolean esPar(int n) {
+<span class="fc bfc" id="L13" title="All 2 branches covered.">        return n % 2 == 0;</span>
+    }
+
+    boolean esBisiesto(int n) {
+<span class="fc bfc" id="L17" title="All 6 branches covered.">        return ((n%4 == 0) &amp;&amp; (n%100!=0) || (n % 400 == 0));</span>
+    }
+
+    int factorialIterativo(int n) {
+<span class="fc" id="L21">        int factorialN = 1;</span>
+<span class="fc bfc" id="L22" title="All 2 branches covered.">        while(n&gt;1){</span>
+<span class="fc" id="L23">            factorialN *=n;</span>
+<span class="fc" id="L24">            n-=1;</span>
+        }
+<span class="fc" id="L26">        return factorialN;</span>
+    }
+
+    int factorialRecursivo(int n) {
+<span class="fc bfc" id="L30" title="All 4 branches covered.">        if(n == 0 || n == 1){</span>
+<span class="fc" id="L31">            return 1;</span>
+        }
+
+<span class="fc" id="L34">        return n * factorialIterativo(n-1);</span>
+    }
+
+    boolean esPrimo(int n) {
+<span class="fc" id="L38">        boolean primo = true;</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        if(n&lt;2) return false;  </span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        for(int i = 1; i&lt;=n; i++){</span>
+<span class="fc bfc" id="L41" title="All 6 branches covered.">            if((i!=1 &amp;&amp; i!=n) &amp;&amp; (n % i == 0)) primo = false;</span>
+        }
+<span class="fc" id="L43">        return primo;</span>
+    }
+
+    int sumatoria(int[] numeros) {
+<span class="fc" id="L47">        int acum = 0;</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">        for(int i = 0; i&lt;numeros.length; i++){</span>
+<span class="fc" id="L49">            acum += numeros[i];</span>
+        }
+<span class="fc" id="L51">        return acum;</span>
+    }
+
+    int busqueda(int[] numeros, int buscado) {
+<span class="fc" id="L55">        int posicion = 0;</span>
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">        for(int i = 0; i&lt;numeros.length; i++){</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">            if(numeros[i] == buscado){</span>
+<span class="fc" id="L58">                posicion = i;</span>
+<span class="fc" id="L59">                break;</span>
+            }
+        }
+<span class="fc" id="L62">        return posicion;</span>
+    }
+
+    boolean tienePrimo(int[] numeros) {
+<span class="fc" id="L66">        boolean existePrimo = false; </span>
+<span class="fc bfc" id="L67" title="All 2 branches covered.">        for(int i = 0; i&lt;numeros.length; i++){</span>
+<span class="fc bfc" id="L68" title="All 2 branches covered.">            if(esPrimo(numeros[i])){</span>
+<span class="fc" id="L69">                existePrimo = true;</span>
+<span class="fc" id="L70">                break; </span>
+            }
+        }
+<span class="fc" id="L73">        return existePrimo;</span>
+    }
+
+    boolean todosPares(int[] numeros) {
+<span class="fc" id="L77">        boolean todosPares = true;</span>
+<span class="fc bfc" id="L78" title="All 2 branches covered.">        for(int i = 0; i&lt;numeros.length; i++){</span>
+<span class="fc bfc" id="L79" title="All 2 branches covered.">            if(numeros[i] % 2 != 0){</span>
+<span class="fc" id="L80">                todosPares = false;</span>
+<span class="fc" id="L81">                break; </span>
+            }
+        }
+        
+<span class="fc" id="L85">        return todosPares;</span>
+    }
+
+    boolean esPrefijo(String s1, String s2) {
+<span class="fc" id="L89">        boolean esPrefijo = true;</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">        if(s1.length() &gt; s2.length()) return false; </span>
+<span class="fc bfc" id="L91" title="All 2 branches covered.">        for(int i = 0; i&lt;s1.length(); i++){</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">                if(s1.charAt(i) != s2.charAt(i)) esPrefijo = false; </span>
+        }
+<span class="fc" id="L94">        return esPrefijo;</span>
+    }
+
+    boolean esSufijo(String s1, String s2) {
+<span class="fc" id="L98">        boolean esSufijo = true; </span>
+<span class="fc bfc" id="L99" title="All 2 branches covered.">        if(s1.length() &gt; s2.length()) return false;</span>
+<span class="fc bfc" id="L100" title="All 2 branches covered.">        for(int i=0; i&lt;s1.length(); i++){</span>
+<span class="fc bfc" id="L101" title="All 2 branches covered.">                if(s1.charAt(s1.length()-i-1) != s2.charAt(s2.length()-i-1)) esSufijo = false; </span>
+        }
+<span class="fc" id="L103">        return esSufijo;</span>
+    }
+}
+
+
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
