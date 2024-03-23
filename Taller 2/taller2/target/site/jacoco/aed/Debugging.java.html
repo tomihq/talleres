@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Debugging.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">labo2</a> &gt; <a href="index.source.html" class="el_package">aed</a> &gt; <span class="el_source">Debugging.java</span></div><h1>Debugging.java</h1><pre class="source lang-java linenums">package aed;
+
+<span class="fc" id="L3">class Debugging {</span>
+    boolean xor(boolean a, boolean b) {
+<span class="fc bfc" id="L5" title="All 8 branches covered.">        return (a || b) &amp;&amp; !(a &amp;&amp; b);</span>
+    }
+
+    boolean iguales(int[] xs, int[] ys) {
+<span class="fc" id="L9">        boolean res = true;</span>
+
+<span class="fc bfc" id="L11" title="All 2 branches covered.">        if(xs.length != ys.length) return false;</span>
+
+<span class="fc bfc" id="L13" title="All 2 branches covered.">        for (int i = 0; i &lt; xs.length; i++) {</span>
+<span class="fc bfc" id="L14" title="All 2 branches covered.">            if (xs[i] != ys[i]) {</span>
+<span class="fc" id="L15">                res = false;</span>
+            }
+        }
+<span class="fc" id="L18">        return res;</span>
+    }
+
+    boolean ordenado(int[] xs) {
+<span class="fc" id="L22">        boolean res = true;</span>
+<span class="fc bfc" id="L23" title="All 2 branches covered.">        for (int i = 0; i &lt; xs.length; i++) {</span>
+<span class="fc bfc" id="L24" title="All 2 branches covered.">            if(i+1 &lt; xs.length){</span>
+<span class="fc bfc" id="L25" title="All 2 branches covered.">                if (xs[i] &gt; xs [i+1]) {</span>
+<span class="fc" id="L26">                    res = false;</span>
+                }
+            }
+           
+        }
+<span class="fc" id="L31">        return res;</span>
+    }
+
+    int maximo(int[] xs) {
+<span class="fc" id="L35">        int res = xs[0];</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        for (int i = 0; i &lt; xs.length; i++) {</span>
+<span class="fc bfc" id="L37" title="All 2 branches covered.">            if (xs[i] &gt; res) res = xs[i];</span>
+        }
+<span class="fc" id="L39">        return res;</span>
+    }
+
+    boolean todosPositivos(int[] xs) {
+<span class="fc" id="L43">        boolean sonTodosPositivos = true;</span>
+<span class="fc bfc" id="L44" title="All 2 branches covered.">        for(int i = 0; i&lt;xs.length; i++){</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">            if(xs[i]&lt;1){</span>
+<span class="fc" id="L46">                sonTodosPositivos = false; </span>
+<span class="fc" id="L47">                break;</span>
+            }
+        }
+<span class="fc" id="L50">        return sonTodosPositivos;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
