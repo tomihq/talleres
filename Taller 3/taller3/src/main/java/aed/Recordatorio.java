@@ -30,7 +30,9 @@ public class Recordatorio {
 
     @Override
     public boolean equals(Object otro) {
-        throw new UnsupportedOperationException("No implementada aun");
+       if(otro == null || otro.getClass() != this.getClass()) return false;
+       Recordatorio otroRecordatorio = (Recordatorio) otro;
+       return otroRecordatorio.fecha == this.fecha && otroRecordatorio.horario == this.horario && otroRecordatorio.mensaje == this.mensaje;
     }
 
 }
