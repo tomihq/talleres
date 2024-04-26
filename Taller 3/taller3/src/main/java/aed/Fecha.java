@@ -21,6 +21,10 @@ public class Fecha {
         return this.mes; 
     }
 
+    public String fechaCompleta() {
+        return this.dia + "/" + this.mes;
+    }
+
     @Override
     public String toString() {
         return this.dia + "/" + this.mes;

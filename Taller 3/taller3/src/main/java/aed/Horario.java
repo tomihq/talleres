@@ -17,6 +17,10 @@ public class Horario {
         return this.minutos;
     }
 
+    public String horarioCompleto(){
+        return this.hora + ":" + this.minutos;
+    }
+
     @Override
     public String toString() {
         return this.hora + ":" + this.minutos;

@@ -25,7 +25,7 @@ public class Recordatorio {
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("No implementada aun");
+        return this.mensaje + " @ " + this.fecha.fechaCompleta() + " " + this.horario.horarioCompleto();
     }
 
     @Override
