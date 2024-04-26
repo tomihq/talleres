@@ -1,38 +1,43 @@
 package aed;
 
 class ArregloRedimensionableDeRecordatorios implements SecuenciaDeRecordatorios {
-
+    Recordatorio[] recordatorios = {};
     public ArregloRedimensionableDeRecordatorios() {
-        throw new UnsupportedOperationException("No implementada aun");
     }
 
     public ArregloRedimensionableDeRecordatorios(ArregloRedimensionableDeRecordatorios vector) {
-        throw new UnsupportedOperationException("No implementada aun");
+        vector.copiar();
     }
 
     public int longitud() {
-        throw new UnsupportedOperationException("No implementada aun");
+        return this.recordatorios.length;
     }
 
     public void agregarAtras(Recordatorio i) {
-        throw new UnsupportedOperationException("No implementada aun");
+        this.recordatorios[this.longitud()] = i;
     }
 
     public Recordatorio obtener(int i) {
-        throw new UnsupportedOperationException("No implementada aun");
+        return this.obtener(i);
     }
 
     public void quitarAtras() {
-        throw new UnsupportedOperationException("No implementada aun");
+        System.arraycopy(this.recordatorios, 0, this.recordatorios, this.recordatorios.length-1, this.recordatorios.length-1);
     }
 
     public void modificarPosicion(int indice, Recordatorio valor) {
-        throw new UnsupportedOperationException("No implementada aun");
+        this.recordatorios[indice] = valor;
 
     }
 
     public ArregloRedimensionableDeRecordatorios copiar() {
-        throw new UnsupportedOperationException("No implementada aun");
+        ArregloRedimensionableDeRecordatorios arregloRecordatorioNuevo = new ArregloRedimensionableDeRecordatorios();
+        for(int i=0; i<recordatorios.length; i++){
+            arregloRecordatorioNuevo.agregarAtras(new Recordatorio(this.recordatorios[i].mensaje, this.recordatorios[i].fecha, this.recordatorios[i].horario));
+            
+        }
+
+        return arregloRecordatorioNuevo;
     }
 
 }
