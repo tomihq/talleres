@@ -1,7 +1,7 @@
 package aed;
 
 class ArregloRedimensionableDeRecordatorios implements SecuenciaDeRecordatorios {
-    Recordatorio[] recordatorios = {};
+    Recordatorio[] recordatorios;
     public ArregloRedimensionableDeRecordatorios() {
     }
 
