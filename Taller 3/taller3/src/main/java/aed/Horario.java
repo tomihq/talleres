@@ -24,7 +24,9 @@ public class Horario {
 
     @Override
     public boolean equals(Object otro) {
-        throw new UnsupportedOperationException("No implementada aun");
+        if(otro == null || otro.getClass() != this.getClass()) return false;
+        Horario otroHorario = (Horario) otro;
+        return otroHorario.hora == this.hora && otroHorario.minutos == this.minutos;
     }
 
 }
