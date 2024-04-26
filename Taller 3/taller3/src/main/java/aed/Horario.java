@@ -1,22 +1,25 @@
 package aed;
 
 public class Horario {
+    int hora;
+    int minutos;
 
     public Horario(int hora, int minutos) {
-        throw new UnsupportedOperationException("No implementada aun");
+        this.hora = hora;
+        this.minutos = minutos;
     }
 
     public int hora() {
-        throw new UnsupportedOperationException("No implementada aun");
+        return this.hora;
     }
 
     public int minutos() {
-        throw new UnsupportedOperationException("No implementada aun");
+        return this.minutos;
     }
 
     @Override
     public String toString() {
-        throw new UnsupportedOperationException("No implementada aun");
+        return this.hora + ":" + this.minutos;
     }
 
     @Override

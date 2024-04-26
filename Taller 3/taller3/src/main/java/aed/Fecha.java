@@ -28,7 +28,9 @@ public class Fecha {
 
     @Override
     public boolean equals(Object otraFecha) {
-        return otraFecha.getClass() == this.getClass();
+        if(otraFecha == null || otraFecha.getClass() != this.getClass()) return false; 
+        Fecha otraFechaCast = (Fecha) otraFecha;
+        return otraFechaCast.dia == this.dia && otraFechaCast.mes == this.mes;
     }
 
     public void incrementarDia() {
