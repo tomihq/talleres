@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="aed.ArregloRedimensionableTest" time="0.073" tests="7" errors="2" skipped="0" failures="4">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="aed.ArregloRedimensionableTest" time="0.06" tests="7" errors="1" skipped="0" failures="5">
   <properties>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
     <property name="java.specification.version" value="11"/>
@@ -14,7 +14,7 @@
     <property name="os.name" value="Linux"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-11-openjdk-amd64/lib"/>
-    <property name="sun.java.command" value="/mnt/g/YO/UBA/EXACTAS/Algoritmos II/Talleres/Taller 3/taller3/target/surefire/surefirebooter-20240426221812840_3.jar /mnt/g/YO/UBA/EXACTAS/Algoritmos II/Talleres/Taller 3/taller3/target/surefire 2024-04-26T22-18-12_752-jvmRun1 surefire-20240426221812840_1tmp surefire_0-20240426221812840_2tmp"/>
+    <property name="sun.java.command" value="/mnt/g/YO/UBA/EXACTAS/Algoritmos II/Talleres/Taller 3/taller3/target/surefire/surefirebooter-20240426223038824_3.jar /mnt/g/YO/UBA/EXACTAS/Algoritmos II/Talleres/Taller 3/taller3/target/surefire 2024-04-26T22-30-38_727-jvmRun1 surefire-20240426223038824_1tmp surefire_0-20240426223038824_2tmp"/>
     <property name="jdk.debug" value="release"/>
     <property name="surefire.test.class.path" value="/mnt/g/YO/UBA/EXACTAS/Algoritmos II/Talleres/Taller 3/taller3/target/test-classes:/mnt/g/YO/UBA/EXACTAS/Algoritmos II/Talleres/Taller 3/taller3/target/classes:/home/tomihq/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/home/tomihq/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/home/tomihq/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/tomihq/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/home/tomihq/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/home/tomihq/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
@@ -30,7 +30,7 @@
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/mnt/g/YO/UBA/EXACTAS/Algoritmos II/Talleres/Taller 3/taller3/target/surefire/surefirebooter-20240426221812840_3.jar"/>
+    <property name="surefire.real.class.path" value="/mnt/g/YO/UBA/EXACTAS/Algoritmos II/Talleres/Taller 3/taller3/target/surefire/surefirebooter-20240426223038824_3.jar"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="11.0.22+7-post-Ubuntu-0ubuntu222.04.1"/>
     <property name="user.name" value="tomihq"/>
@@ -56,9 +56,9 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="55.0"/>
   </properties>
-  <testcase name="nuevoVectorEstaVacio" classname="aed.ArregloRedimensionableTest" time="0.015"/>
-  <testcase name="agregarPocosElementos" classname="aed.ArregloRedimensionableTest" time="0.016">
-    <failure message="expected: aed.Recordatorio@4fad6218&lt;1 @ 1/1 0:0&gt; but was: aed.Recordatorio@1bf39d06&lt;1 @ 1/1 0:0&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: aed.Recordatorio@4fad6218<1 @ 1/1 0:0> but was: aed.Recordatorio@1bf39d06<1 @ 1/1 0:0>
+  <testcase name="nuevoVectorEstaVacio" classname="aed.ArregloRedimensionableTest" time="0.017"/>
+  <testcase name="agregarPocosElementos" classname="aed.ArregloRedimensionableTest" time="0.008">
+    <failure message="expected: aed.Recordatorio@68217d41&lt;1 @ 1/1 0:0&gt; but was: aed.Recordatorio@1ac45389&lt;1 @ 1/1 0:0&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: aed.Recordatorio@68217d41<1 @ 1/1 0:0> but was: aed.Recordatorio@1ac45389<1 @ 1/1 0:0>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
@@ -140,7 +140,7 @@
 ]]></failure>
   </testcase>
   <testcase name="copiarVector" classname="aed.ArregloRedimensionableTest" time="0.001">
-    <failure message="expected: aed.Recordatorio@5496c165&lt;1 @ 1/1 0:0&gt; but was: aed.Recordatorio@51a8313b&lt;1 @ 1/1 0:0&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: aed.Recordatorio@5496c165<1 @ 1/1 0:0> but was: aed.Recordatorio@51a8313b<1 @ 1/1 0:0>
+    <failure message="expected: aed.Recordatorio@2a03d65c&lt;1 @ 1/1 0:0&gt; but was: aed.Recordatorio@6642dc5a&lt;1 @ 1/1 0:0&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: aed.Recordatorio@2a03d65c<1 @ 1/1 0:0> but was: aed.Recordatorio@6642dc5a<1 @ 1/1 0:0>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
@@ -221,7 +221,7 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 ]]></failure>
   </testcase>
-  <testcase name="vectorImplementaSecuencia" classname="aed.ArregloRedimensionableTest" time="0.005">
+  <testcase name="vectorImplementaSecuencia" classname="aed.ArregloRedimensionableTest" time="0.004">
     <failure message="expected: &lt;true&gt; but was: &lt;false&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -303,11 +303,15 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 ]]></failure>
   </testcase>
-  <testcase name="quitarElementos" classname="aed.ArregloRedimensionableTest" time="0">
-    <error message="arraycopy: last destination index 8 out of bounds for object array[5]" type="java.lang.ArrayIndexOutOfBoundsException"><![CDATA[java.lang.ArrayIndexOutOfBoundsException: arraycopy: last destination index 8 out of bounds for object array[5]
-	at java.base/java.lang.System.arraycopy(Native Method)
-	at aed.ArregloRedimensionableDeRecordatorios.quitarAtras(ArregloRedimensionableDeRecordatorios.java:43)
-	at aed.ArregloRedimensionableTest.quitarElementos(ArregloRedimensionableTest.java:46)
+  <testcase name="quitarElementos" classname="aed.ArregloRedimensionableTest" time="0.002">
+    <failure message="expected: aed.Recordatorio@2c6aed22&lt;1 @ 1/1 0:0&gt; but was: aed.Recordatorio@e322ec9&lt;1 @ 1/1 0:0&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: aed.Recordatorio@2c6aed22<1 @ 1/1 0:0> but was: aed.Recordatorio@e322ec9<1 @ 1/1 0:0>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1142)
+	at aed.ArregloRedimensionableTest.quitarElementos(ArregloRedimensionableTest.java:49)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -379,9 +383,9 @@
 	at org.apache.maven.surefire.booter.ForkedBooter.execute(ForkedBooter.java:162)
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
-]]></error>
+]]></failure>
   </testcase>
-  <testcase name="copiarVectorConstructor" classname="aed.ArregloRedimensionableTest" time="0.001">
+  <testcase name="copiarVectorConstructor" classname="aed.ArregloRedimensionableTest" time="0.004">
     <error type="java.lang.NullPointerException"><![CDATA[java.lang.NullPointerException
 	at aed.ArregloRedimensionableDeRecordatorios.longitud(ArregloRedimensionableDeRecordatorios.java:16)
 	at aed.ArregloRedimensionableTest.copiarVectorConstructor(ArregloRedimensionableTest.java:126)
@@ -459,7 +463,7 @@
 ]]></error>
   </testcase>
   <testcase name="modificarPosición" classname="aed.ArregloRedimensionableTest" time="0.001">
-    <failure message="expected: aed.Recordatorio@7acfb656&lt;1 @ 1/1 0:0&gt; but was: aed.Recordatorio@2e5ee2c9&lt;1 @ 1/1 0:0&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: aed.Recordatorio@7acfb656<1 @ 1/1 0:0> but was: aed.Recordatorio@2e5ee2c9<1 @ 1/1 0:0>
+    <failure message="expected: aed.Recordatorio@55a609dd&lt;1 @ 1/1 0:0&gt; but was: aed.Recordatorio@4afd21c6&lt;1 @ 1/1 0:0&gt;" type="org.opentest4j.AssertionFailedError"><![CDATA[org.opentest4j.AssertionFailedError: expected: aed.Recordatorio@55a609dd<1 @ 1/1 0:0> but was: aed.Recordatorio@4afd21c6<1 @ 1/1 0:0>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)

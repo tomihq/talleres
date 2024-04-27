@@ -21,6 +21,7 @@ class ArregloRedimensionableDeRecordatorios implements SecuenciaDeRecordatorios 
             this.crearNuevoArreglo();
         }
         this.recordatorios[this.elementos] = i;
+
         this.elementos += 1;
     }
 
@@ -40,7 +41,9 @@ class ArregloRedimensionableDeRecordatorios implements SecuenciaDeRecordatorios 
     }
 
     public void quitarAtras() {
-        System.arraycopy(this.recordatorios, 0, this.recordatorios, this.recordatorios.length-1, this.recordatorios.length-1);
+        Recordatorio[] nuevoArray = new Recordatorio[this.elementos-1];
+        System.arraycopy(this.recordatorios, 0, nuevoArray, 0, this.elementos - 1);
+        this.recordatorios = nuevoArray;
         this.elementos-=1;
     }
 

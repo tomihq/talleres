@@ -1,9 +1,9 @@
 -------------------------------------------------------------------------------
 Test set: aed.ArregloRedimensionableTest
 -------------------------------------------------------------------------------
-Tests run: 7, Failures: 4, Errors: 2, Skipped: 0, Time elapsed: 0.073 s <<< FAILURE! - in aed.ArregloRedimensionableTest
-aed.ArregloRedimensionableTest.agregarPocosElementos  Time elapsed: 0.016 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: aed.Recordatorio@4fad6218<1 @ 1/1 0:0> but was: aed.Recordatorio@1bf39d06<1 @ 1/1 0:0>
+Tests run: 7, Failures: 5, Errors: 1, Skipped: 0, Time elapsed: 0.06 s <<< FAILURE! - in aed.ArregloRedimensionableTest
+aed.ArregloRedimensionableTest.agregarPocosElementos  Time elapsed: 0.008 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: aed.Recordatorio@68217d41<1 @ 1/1 0:0> but was: aed.Recordatorio@1ac45389<1 @ 1/1 0:0>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
@@ -84,7 +84,7 @@ org.opentest4j.AssertionFailedError: expected: aed.Recordatorio@4fad6218<1 @ 1/1
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
 aed.ArregloRedimensionableTest.copiarVector  Time elapsed: 0.001 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: aed.Recordatorio@5496c165<1 @ 1/1 0:0> but was: aed.Recordatorio@51a8313b<1 @ 1/1 0:0>
+org.opentest4j.AssertionFailedError: expected: aed.Recordatorio@2a03d65c<1 @ 1/1 0:0> but was: aed.Recordatorio@6642dc5a<1 @ 1/1 0:0>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
@@ -164,7 +164,7 @@ org.opentest4j.AssertionFailedError: expected: aed.Recordatorio@5496c165<1 @ 1/1
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
-aed.ArregloRedimensionableTest.vectorImplementaSecuencia  Time elapsed: 0.005 s  <<< FAILURE!
+aed.ArregloRedimensionableTest.vectorImplementaSecuencia  Time elapsed: 0.004 s  <<< FAILURE!
 org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
@@ -245,11 +245,15 @@ org.opentest4j.AssertionFailedError: expected: <true> but was: <false>
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
-aed.ArregloRedimensionableTest.quitarElementos  Time elapsed: 0 s  <<< ERROR!
-java.lang.ArrayIndexOutOfBoundsException: arraycopy: last destination index 8 out of bounds for object array[5]
-	at java.base/java.lang.System.arraycopy(Native Method)
-	at aed.ArregloRedimensionableDeRecordatorios.quitarAtras(ArregloRedimensionableDeRecordatorios.java:43)
-	at aed.ArregloRedimensionableTest.quitarElementos(ArregloRedimensionableTest.java:46)
+aed.ArregloRedimensionableTest.quitarElementos  Time elapsed: 0.002 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: expected: aed.Recordatorio@2c6aed22<1 @ 1/1 0:0> but was: aed.Recordatorio@e322ec9<1 @ 1/1 0:0>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1142)
+	at aed.ArregloRedimensionableTest.quitarElementos(ArregloRedimensionableTest.java:49)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -322,7 +326,7 @@ java.lang.ArrayIndexOutOfBoundsException: arraycopy: last destination index 8 ou
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
-aed.ArregloRedimensionableTest.copiarVectorConstructor  Time elapsed: 0.001 s  <<< ERROR!
+aed.ArregloRedimensionableTest.copiarVectorConstructor  Time elapsed: 0.004 s  <<< ERROR!
 java.lang.NullPointerException
 	at aed.ArregloRedimensionableDeRecordatorios.longitud(ArregloRedimensionableDeRecordatorios.java:16)
 	at aed.ArregloRedimensionableTest.copiarVectorConstructor(ArregloRedimensionableTest.java:126)
@@ -399,7 +403,7 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
 aed.ArregloRedimensionableTest.modificarPosición  Time elapsed: 0.001 s  <<< FAILURE!
-org.opentest4j.AssertionFailedError: expected: aed.Recordatorio@7acfb656<1 @ 1/1 0:0> but was: aed.Recordatorio@2e5ee2c9<1 @ 1/1 0:0>
+org.opentest4j.AssertionFailedError: expected: aed.Recordatorio@55a609dd<1 @ 1/1 0:0> but was: aed.Recordatorio@4afd21c6<1 @ 1/1 0:0>
 	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
 	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
 	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
