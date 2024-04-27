@@ -37,7 +37,7 @@ public class Agenda {
         String mensaje = this.fechaActual.fechaCompleta() + "\n" + "=====" + "\n";
         for(int i = 0; i<this.recordatorios.length; i++){
             if(this.recordatorios[i].fecha.dia == fechaActual.dia && this.recordatorios[i].fecha.mes == fechaActual.mes){
-                mensaje.concat(this.recordatorios[i].mensaje() + "\n");
+                mensaje = mensaje.concat(this.recordatorios[i].toString() + "\n");
             }
         }
         return mensaje;

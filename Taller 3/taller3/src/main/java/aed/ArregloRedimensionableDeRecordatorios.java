@@ -2,6 +2,7 @@ package aed;
 
 class ArregloRedimensionableDeRecordatorios implements SecuenciaDeRecordatorios {
     Recordatorio[] recordatorios;
+    int tamañoArray = 0; 
     int elementos = 0;
     public ArregloRedimensionableDeRecordatorios() {
         this.recordatorios = new Recordatorio[0];
@@ -16,11 +17,11 @@ class ArregloRedimensionableDeRecordatorios implements SecuenciaDeRecordatorios 
     }
 
     public void agregarAtras(Recordatorio i) {
-        if(this.recordatorios.length == elementos){
+        if(this.elementos == this.recordatorios.length){
             this.crearNuevoArreglo();
         }
-        this.recordatorios[this.longitud()] = i;
-        this.elementos +=1;
+        this.recordatorios[this.elementos] = i;
+        this.elementos += 1;
     }
 
     public Recordatorio obtener(int i) {
@@ -28,12 +29,12 @@ class ArregloRedimensionableDeRecordatorios implements SecuenciaDeRecordatorios 
     }
 
     public void crearNuevoArreglo(){
-        int cap = this.recordatorios.length == 0 ? 1 : this.recordatorios.length * 4  ;
-        Recordatorio[] recordatoriosRedimensionado = new Recordatorio[cap];
+        int nuevoTamaño  = this.recordatorios.length == 0 ? 1 : this.recordatorios.length+1;
+        this.tamañoArray = nuevoTamaño;
+        Recordatorio[] recordatoriosRedimensionado = new Recordatorio[tamañoArray];
         for(int i = 0; i<this.recordatorios.length; i++){
             recordatoriosRedimensionado[i] = this.recordatorios[i];
         }
-        this.elementos = cap;
         this.recordatorios = recordatoriosRedimensionado;
 
     }
