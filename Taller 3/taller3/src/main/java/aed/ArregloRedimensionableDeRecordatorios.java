@@ -9,7 +9,7 @@ class ArregloRedimensionableDeRecordatorios implements SecuenciaDeRecordatorios 
     }
 
     public ArregloRedimensionableDeRecordatorios(ArregloRedimensionableDeRecordatorios vector) {
-        vector.copiar();
+        this.recordatorios = vector.copiar().recordatorios;
     }
 
     public int longitud() {

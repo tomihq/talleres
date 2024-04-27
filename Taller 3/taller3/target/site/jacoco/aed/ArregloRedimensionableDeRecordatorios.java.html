@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>ArregloRedimensionableDeRecordatorios.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">labo2</a> &gt; <a href="index.source.html" class="el_package">aed</a> &gt; <span class="el_source">ArregloRedimensionableDeRecordatorios.java</span></div><h1>ArregloRedimensionableDeRecordatorios.java</h1><pre class="source lang-java linenums">package aed;
+
+class ArregloRedimensionableDeRecordatorios implements SecuenciaDeRecordatorios {
+    Recordatorio[] recordatorios;
+<span class="fc" id="L5">    int tamañoArray = 0; </span>
+<span class="fc" id="L6">    int elementos = 0;</span>
+<span class="fc" id="L7">    public ArregloRedimensionableDeRecordatorios() {</span>
+<span class="fc" id="L8">        this.recordatorios = new Recordatorio[0];</span>
+<span class="fc" id="L9">    }</span>
+
+<span class="fc" id="L11">    public ArregloRedimensionableDeRecordatorios(ArregloRedimensionableDeRecordatorios vector) {</span>
+<span class="fc" id="L12">        this.recordatorios = vector.copiar().recordatorios;</span>
+<span class="fc" id="L13">    }</span>
+
+    public int longitud() {
+<span class="fc" id="L16">        return this.recordatorios.length;</span>
+    }
+
+    public void agregarAtras(Recordatorio i) {
+<span class="pc bpc" id="L20" title="1 of 2 branches missed.">        if(this.elementos == this.recordatorios.length){</span>
+<span class="fc" id="L21">            this.crearNuevoArreglo();</span>
+        }
+<span class="fc" id="L23">        this.recordatorios[this.elementos] = i;</span>
+
+<span class="fc" id="L25">        this.elementos += 1;</span>
+<span class="fc" id="L26">    }</span>
+
+    public Recordatorio obtener(int i) {
+<span class="fc" id="L29">        return this.recordatorios[i];</span>
+    }
+
+    public void crearNuevoArreglo(){
+<span class="fc bfc" id="L33" title="All 2 branches covered.">        int nuevoTamaño  = this.recordatorios.length == 0 ? 1 : this.recordatorios.length+1;</span>
+<span class="fc" id="L34">        this.tamañoArray = nuevoTamaño;</span>
+<span class="fc" id="L35">        Recordatorio[] recordatoriosRedimensionado = new Recordatorio[tamañoArray];</span>
+<span class="fc bfc" id="L36" title="All 2 branches covered.">        for(int i = 0; i&lt;this.recordatorios.length; i++){</span>
+<span class="fc" id="L37">            recordatoriosRedimensionado[i] = this.recordatorios[i];</span>
+        }
+<span class="fc" id="L39">        this.recordatorios = recordatoriosRedimensionado;</span>
+
+<span class="fc" id="L41">    }</span>
+
+    public void quitarAtras() {
+<span class="fc" id="L44">        Recordatorio[] nuevoArray = new Recordatorio[this.elementos-1];</span>
+<span class="fc" id="L45">        System.arraycopy(this.recordatorios, 0, nuevoArray, 0, this.elementos - 1);</span>
+<span class="fc" id="L46">        this.recordatorios = nuevoArray;</span>
+<span class="fc" id="L47">        this.elementos-=1;</span>
+<span class="fc" id="L48">    }</span>
+
+    public void modificarPosicion(int indice, Recordatorio valor) {
+<span class="fc" id="L51">        this.recordatorios[indice] = valor;</span>
+
+<span class="fc" id="L53">    }</span>
+
+    public ArregloRedimensionableDeRecordatorios copiar() {
+<span class="fc" id="L56">        ArregloRedimensionableDeRecordatorios arregloRecordatorioNuevo = new ArregloRedimensionableDeRecordatorios();</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">        for(int i=0; i&lt;recordatorios.length; i++){</span>
+<span class="fc" id="L58">            arregloRecordatorioNuevo.agregarAtras(new Recordatorio(this.recordatorios[i].mensaje, this.recordatorios[i].fecha, this.recordatorios[i].horario));</span>
+            
+        }
+
+<span class="fc" id="L62">        return arregloRecordatorioNuevo;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
