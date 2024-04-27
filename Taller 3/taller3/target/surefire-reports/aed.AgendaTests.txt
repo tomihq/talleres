@@ -1,11 +1,23 @@
 -------------------------------------------------------------------------------
 Test set: aed.AgendaTests
 -------------------------------------------------------------------------------
-Tests run: 13, Failures: 0, Errors: 2, Skipped: 0, Time elapsed: 0.165 s <<< FAILURE! - in aed.AgendaTests
-aed.AgendaTests.incrementarDiaModificaRecordatorios  Time elapsed: 0.066 s  <<< ERROR!
-java.lang.NullPointerException
-	at aed.Agenda.agregarRecordatorio(Agenda.java:13)
-	at aed.AgendaTests.incrementarDiaModificaRecordatorios(AgendaTests.java:172)
+Tests run: 13, Failures: 2, Errors: 0, Skipped: 0, Time elapsed: 0.295 s <<< FAILURE! - in aed.AgendaTests
+aed.AgendaTests.incrementarDiaModificaRecordatorios  Time elapsed: 0.117 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+expected: <10/5
+=====
+Clase Algoritmos @ 10/5 17:0
+Labo Algoritmos @ 10/5 19:0
+> but was: <10/5
+=====
+>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1142)
+	at aed.AgendaTests.incrementarDiaModificaRecordatorios(AgendaTests.java:181)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
@@ -78,10 +90,22 @@ java.lang.NullPointerException
 	at org.apache.maven.surefire.booter.ForkedBooter.run(ForkedBooter.java:507)
 	at org.apache.maven.surefire.booter.ForkedBooter.main(ForkedBooter.java:495)
 
-aed.AgendaTests.agregarRecordatorios  Time elapsed: 0 s  <<< ERROR!
-java.lang.NullPointerException
-	at aed.Agenda.agregarRecordatorio(Agenda.java:13)
-	at aed.AgendaTests.agregarRecordatorios(AgendaTests.java:156)
+aed.AgendaTests.agregarRecordatorios  Time elapsed: 0.001 s  <<< FAILURE!
+org.opentest4j.AssertionFailedError: 
+expected: <10/5
+=====
+Clase Algoritmos @ 10/5 17:0
+Labo Algoritmos @ 10/5 19:0
+> but was: <10/5
+=====
+>
+	at org.junit.jupiter.api.AssertionFailureBuilder.build(AssertionFailureBuilder.java:151)
+	at org.junit.jupiter.api.AssertionFailureBuilder.buildAndThrow(AssertionFailureBuilder.java:132)
+	at org.junit.jupiter.api.AssertEquals.failNotEqual(AssertEquals.java:197)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1142)
+	at aed.AgendaTests.agregarRecordatorios(AgendaTests.java:164)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
