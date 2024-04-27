@@ -40,7 +40,12 @@ public class Fecha {
     public void incrementarDia() {
         if(this.diasEnMes(this.mes)<this.dia+1){
             this.dia = 1;
-            this.mes += 1;
+            if(this.mes+1<12){
+                this.mes += 1;
+            }else{
+                this.mes = 1; 
+            }
+            
         }else{
             this.dia += 1;
         }
