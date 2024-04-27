@@ -2,7 +2,6 @@ package aed;
 
 class ArregloRedimensionableDeRecordatorios implements SecuenciaDeRecordatorios {
     Recordatorio[] recordatorios;
-    int longitud; 
     public ArregloRedimensionableDeRecordatorios() {
     }
 
@@ -15,6 +14,7 @@ class ArregloRedimensionableDeRecordatorios implements SecuenciaDeRecordatorios 
     }
 
     public void agregarAtras(Recordatorio i) {
+      
         this.recordatorios[this.longitud()] = i;
     }
 
