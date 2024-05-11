@@ -3,7 +3,7 @@ package aed;
 import java.util.*;
 
 public class ListaEnlazada<T> implements Secuencia<T> {
-    int longitud;
+    private int longitud;
     private Nodo primero; 
 
 
@@ -14,6 +14,7 @@ public class ListaEnlazada<T> implements Secuencia<T> {
         public Nodo(T valor){
             this.valor = valor;
         }
+        
     }
 
     public ListaEnlazada() {
@@ -31,13 +32,13 @@ public class ListaEnlazada<T> implements Secuencia<T> {
 
     public void agregarAdelante(T elem) {
         Nodo nuevoNodo = new Nodo(elem);
-        if(longitud == 0){
+        if(this.longitud == 0){
             this.primero = nuevoNodo; 
         }else{
-          primeroAnterior = this.primero; 
+          Nodo primeroAnterior = this.primero; 
+          nuevoNodo.sig = primeroAnterior;
+          primeroAnterior.prev = nuevoNodo; 
           this.primero = nuevoNodo; 
-          this.primero.sig = primeroAnterior;
-          primeroAnterior.prev = this.primero;    
         }
         this.longitud += 1; 
         
@@ -45,28 +46,26 @@ public class ListaEnlazada<T> implements Secuencia<T> {
 
     public void agregarAtras(T elem) {
         Nodo nuevo = new Nodo(elem);
-        if (primero == null) {
+        if (this.longitud == 0) {
            this.primero = nuevo;
         } else {
-           Nodo actual = primero;
+           Nodo actual = this.primero;
            while (actual.sig != null) {
                 actual = actual.sig;
            }
         actual.sig = nuevo;
         nuevo.prev = actual; 
+        }
+        this.longitud += 1;
     }
 
     public T obtener(int i) {
-        Nodo nodoEncontrado; 
-        boolean encontrado = false; 
-        if(i == 0){
-            return this.primero; 
-        }
+        T nodoEncontrado = null; 
         for(int j = 0; j<this.longitud; j++){
-            nodoActual = this.primero; 
-            if(j == i && !encontrado){
+            Nodo nodoActual = this.primero; 
+            if(j == i){
                 nodoEncontrado = nodoActual.valor;
-                encontrado = true; 
+                break;
             }else{
                 nodoActual = nodoActual.sig; 
             }
@@ -76,19 +75,7 @@ public class ListaEnlazada<T> implements Secuencia<T> {
 
     public void eliminar(int i) {
         Nodo actual = this.primero; 
-        for(int j = 0; j<this.longitud; j++){
-            prev = actual;
-            siguiente = actual.sig; 
-
-            if(j == i){
-                prev.siguiente = actual.sig;
-                actual.sig.prev = prev.siguiente;  
-            }
-        }
-        Nodo prev = actual; 
-        Nodo siguiente = actual.sig; 
         
-        this.longitud -= 1; 
     }
 
     public void modificarPosicion(int indice, T elem) {
@@ -98,20 +85,21 @@ public class ListaEnlazada<T> implements Secuencia<T> {
     public ListaEnlazada<T> copiar() {
         return new ListaEnlazada(this); 
     }
-    public ListaEnlazada(ListaEnlazada<T> lista) {
+ /*    public ListaEnlazada(ListaEnlazada<T> lista) {
         this.primero = lista.primero;
         this.longitud = lista.longitud;
-    }
+    } */
     
     @Override
     public String toString() {
         StringBuffer string = new StringBuffer(); 
         string.append("[");
-        for(int j = 0; j<this.longitud; i++){
+        for(int j = 0; j<this.longitud; j++){
             string.append(this.primero.valor);
             this.primero = this.primero.sig; 
         }
-        string.append("]")
+        string.append("]");
+        return string.toString(); 
     }
 
     private class ListaIterador implements Iterador<T> {
@@ -139,5 +127,4 @@ public class ListaEnlazada<T> implements Secuencia<T> {
 	    throw new UnsupportedOperationException("No implementada aun");
     }
 
-}
 }
