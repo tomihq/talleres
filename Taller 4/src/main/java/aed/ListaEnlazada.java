@@ -122,6 +122,9 @@ public class ListaEnlazada<T> implements Secuencia<T> {
         for(int j = 0; j<this.longitud; j++){
             string.append(this.primero.valor);
             this.primero = this.primero.sig; 
+            if(j != this.longitud-1){
+                string.append(", ");
+            }
         }
         string.append("]");
         return string.toString(); 
