@@ -32,10 +32,10 @@ public class ListaEnlazada<T> implements Secuencia<T> {
 
     public void agregarAdelante(T elem) {
         Nodo nuevoNodo = new Nodo(elem);
+        Nodo primeroAnterior = this.primero; 
         if(this.longitud == 0){
             this.primero = nuevoNodo; 
         }else{
-          Nodo primeroAnterior = this.primero; 
           nuevoNodo.sig = primeroAnterior;
           primeroAnterior.prev = nuevoNodo; 
           this.primero = nuevoNodo; 
@@ -46,10 +46,10 @@ public class ListaEnlazada<T> implements Secuencia<T> {
 
     public void agregarAtras(T elem) {
         Nodo nuevo = new Nodo(elem);
+        Nodo actual = this.primero;
         if (this.longitud == 0) {
            this.primero = nuevo;
         } else {
-           Nodo actual = this.primero;
            while (actual.sig != null) {
                 actual = actual.sig;
            }
@@ -61,8 +61,8 @@ public class ListaEnlazada<T> implements Secuencia<T> {
 
     public T obtener(int i) {
         T nodoEncontrado = null; 
+        Nodo nodoActual = this.primero; 
         for(int j = 0; j<this.longitud; j++){
-            Nodo nodoActual = this.primero; 
             if(j == i){
                 nodoEncontrado = nodoActual.valor;
                 break;
@@ -75,6 +75,31 @@ public class ListaEnlazada<T> implements Secuencia<T> {
 
     public void eliminar(int i) {
         Nodo actual = this.primero; 
+        Nodo sig = actual.sig;
+        Nodo prev = actual.prev;
+        if(i == 0){
+            sig.prev = null; 
+            this.primero = sig;
+        }else if(i == this.longitud-1){
+            for(int j = 0; j<this.longitud; j++){
+                actual = this.primero;
+                prev = actual.prev;
+                if(j == this.longitud-1){
+                    prev.sig = null; 
+                }
+            }
+        }else{
+            for(int j = 0; j<this.longitud; j++){
+                actual = this.primero;
+                sig = actual.sig;
+                prev = actual.prev;
+                if(j == i){
+                    prev.sig = sig; 
+                    sig.prev = prev; 
+                }
+            }
+        }
+        this.longitud -= 1;
         
     }
 
