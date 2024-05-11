@@ -34,7 +34,9 @@ public class Fecha {
     public boolean equals(Object otraFecha) {
         if(otraFecha == null || otraFecha.getClass() != this.getClass()) return false; 
         Fecha otraFechaCast = (Fecha) otraFecha;
-        return otraFechaCast.dia == this.dia && otraFechaCast.mes == this.mes;
+        return 
+        this.dia().equals(otraFechaCast.dia) &&
+        this.mes().equals(otraFechaCast.mes);
     }
 
     public void incrementarDia() {

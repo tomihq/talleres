@@ -34,32 +34,34 @@ public class Fecha {
     public boolean equals(Object otraFecha) {
 <span class="pc bpc" id="L35" title="1 of 4 branches missed.">        if(otraFecha == null || otraFecha.getClass() != this.getClass()) return false; </span>
 <span class="fc" id="L36">        Fecha otraFechaCast = (Fecha) otraFecha;</span>
-<span class="fc bfc" id="L37" title="All 4 branches covered.">        return otraFechaCast.dia == this.dia &amp;&amp; otraFechaCast.mes == this.mes;</span>
+<span class="fc" id="L37">        return </span>
+<span class="fc bfc" id="L38" title="All 2 branches covered.">        this.dia().equals(otraFechaCast.dia) &amp;&amp;</span>
+<span class="fc bfc" id="L39" title="All 2 branches covered.">        this.mes().equals(otraFechaCast.mes);</span>
     }
 
     public void incrementarDia() {
-<span class="fc bfc" id="L41" title="All 2 branches covered.">        if(this.diasEnMes(this.mes)&lt;this.dia+1){</span>
-<span class="fc" id="L42">            this.dia = 1;</span>
-<span class="fc bfc" id="L43" title="All 2 branches covered.">            if(this.mes+1&lt;12){</span>
-<span class="fc" id="L44">                this.mes += 1;</span>
-<span class="fc" id="L45">            }else{</span>
-<span class="fc" id="L46">                this.mes = 1; </span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        if(this.diasEnMes(this.mes)&lt;this.dia+1){</span>
+<span class="fc" id="L44">            this.dia = 1;</span>
+<span class="fc bfc" id="L45" title="All 2 branches covered.">            if(this.mes+1&lt;12){</span>
+<span class="fc" id="L46">                this.mes += 1;</span>
+<span class="fc" id="L47">            }else{</span>
+<span class="fc" id="L48">                this.mes = 1; </span>
             }
             
-<span class="fc" id="L49">        }else{</span>
-<span class="fc" id="L50">            this.dia += 1;</span>
+<span class="fc" id="L51">        }else{</span>
+<span class="fc" id="L52">            this.dia += 1;</span>
         }
 
-<span class="fc" id="L53">    }</span>
+<span class="fc" id="L55">    }</span>
 
     private int diasEnMes(int mes) {
-<span class="fc" id="L56">        int dias[] = {</span>
+<span class="fc" id="L58">        int dias[] = {</span>
                 // ene, feb, mar, abr, may, jun
-<span class="fc" id="L58">                31, 28, 31, 30, 31, 30,</span>
+<span class="fc" id="L60">                31, 28, 31, 30, 31, 30,</span>
                 // jul, ago, sep, oct, nov, dic
-<span class="fc" id="L60">                31, 31, 30, 31, 30, 31</span>
+<span class="fc" id="L62">                31, 31, 30, 31, 30, 31</span>
         };
-<span class="fc" id="L62">        return dias[mes - 1];</span>
+<span class="fc" id="L64">        return dias[mes - 1];</span>
     }
 
 }
