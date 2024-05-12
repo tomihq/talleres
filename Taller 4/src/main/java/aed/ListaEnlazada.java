@@ -86,11 +86,7 @@ public class ListaEnlazada<T> implements Secuencia<T> {
         }else if(i == this.longitud-1){
             for(int j = 0; j<this.longitud; j++){
                 prev = actual.prev;
-                if(j == this.longitud-1){
-                    prev.sig = null; 
-                }else{
-                    actual = actual.sig;
-                }
+                actual = actual.sig;
             }
         }else{
             for(int j = 0; j<i; j++){
