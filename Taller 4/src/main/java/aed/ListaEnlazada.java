@@ -77,34 +77,60 @@ public class ListaEnlazada<T> implements Secuencia<T> {
         Nodo actual = this.primero; 
         Nodo sig = actual.sig;
         Nodo prev = actual.prev;
-        if(i == 0){
+        if(i == 0 && this.longitud==1){
+            this.primero = null; 
+        }
+        else if(i == 0 && this.longitud>1){
             sig.prev = null; 
             this.primero = sig;
         }else if(i == this.longitud-1){
             for(int j = 0; j<this.longitud; j++){
-                actual = this.primero;
                 prev = actual.prev;
                 if(j == this.longitud-1){
                     prev.sig = null; 
+                }else{
+                    actual = actual.sig;
                 }
             }
         }else{
-            for(int j = 0; j<this.longitud; j++){
-                actual = this.primero;
-                sig = actual.sig;
-                prev = actual.prev;
-                if(j == i){
-                    prev.sig = sig; 
-                    sig.prev = prev; 
-                }
+            for(int j = 0; j<i; j++){
+                actual = actual.sig;
             }
+            prev = actual.prev;
+            sig = actual.sig;
+            prev.sig = sig; 
+            sig.prev = prev; 
+              
         }
         this.longitud -= 1;
         
     }
 
     public void modificarPosicion(int indice, T elem) {
-        throw new UnsupportedOperationException("No implementada aun");
+        Nodo actual = this.primero;
+        Nodo prev = actual.prev;
+        Nodo sig = actual.sig;
+        Nodo nuevoNodo = new Nodo(elem);
+        if(indice == 0){
+            this.primero = nuevoNodo; 
+            sig.prev = nuevoNodo; 
+        }
+        for(int j = 0; j<this.longitud; j++){
+            if(j == indice && j == this.longitud-1){
+                prev = actual.prev;
+                prev.sig = nuevoNodo; 
+            }else if(j == indice){
+                prev = actual.prev;
+                sig = actual.sig; 
+                actual = nuevoNodo;
+                nuevoNodo.prev = prev;
+                nuevoNodo.sig = sig;
+                prev.sig = nuevoNodo;
+                sig.prev = nuevoNodo; 
+            }else{
+                actual = this.primero.sig;
+            }
+        }
     }
 
     public ListaEnlazada<T> copiar() {
