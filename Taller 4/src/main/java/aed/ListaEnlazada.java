@@ -128,7 +128,7 @@ public class ListaEnlazada<T> implements Secuencia<T> {
                 prev.sig = nuevoNodo;
                 sig.prev = nuevoNodo; 
             }else{
-                actual = this.primero.sig;
+                actual = actual.sig;
             }
         }
     }
