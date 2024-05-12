@@ -108,19 +108,19 @@ public class ListaEnlazada<T> implements Secuencia<T> {
 
     public void modificarPosicion(int indice, T elem) {
         Nodo actual = this.primero;
-        Nodo prev = actual.prev;
         Nodo sig = actual.sig;
         Nodo nuevoNodo = new Nodo(elem);
         if(indice == 0){
-            this.primero = nuevoNodo; 
-            sig.prev = nuevoNodo; 
+                sig = this.primero;
+                this.primero = nuevoNodo;
+                nuevoNodo.sig = sig;
+                sig.prev = nuevoNodo;
         }
         for(int j = 0; j<this.longitud; j++){
+            Nodo prev = actual.prev;
             if(j == indice && j == this.longitud-1){
-                prev = actual.prev;
                 prev.sig = nuevoNodo; 
             }else if(j == indice){
-                prev = actual.prev;
                 sig = actual.sig; 
                 actual = nuevoNodo;
                 nuevoNodo.prev = prev;
@@ -157,28 +157,39 @@ public class ListaEnlazada<T> implements Secuencia<T> {
     }
 
     private class ListaIterador implements Iterador<T> {
-    	// Completar atributos privados
+    	int indice; 
+        Nodo ultimo; 
 
         public boolean haySiguiente() {
-	        throw new UnsupportedOperationException("No implementada aun");
+            return indice != longitud; 
         }
         
         public boolean hayAnterior() {
-	        throw new UnsupportedOperationException("No implementada aun");
+            return indice>0 && (indice != longitud);
         }
 
         public T siguiente() {
-	        throw new UnsupportedOperationException("No implementada aun");
+            Nodo nodo = primero; 
+            for(int j = 0; j<indice; j++){
+                nodo = nodo.sig;
+            }
+            indice += 1;
+            return nodo.valor;
         }
         
 
         public T anterior() {
-	        throw new UnsupportedOperationException("No implementada aun");
+            Nodo nodo = primero; 
+            for(int j = 0; j<indice; j++){
+                nodo = nodo.sig;
+            }
+            indice -= 1;
+            return nodo.prev.valor;
         }
     }
 
     public Iterador<T> iterador() {
-	    throw new UnsupportedOperationException("No implementada aun");
+	    return new ListaIterador();
     }
 
 }
