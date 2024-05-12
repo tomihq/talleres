@@ -165,7 +165,7 @@ public class ListaEnlazada<T> implements Secuencia<T> {
         }
         
         public boolean hayAnterior() {
-            return indice>0 && (indice != longitud);
+            return indice>0 && (indice != longitud+1);
         }
 
         public T siguiente() {
@@ -180,11 +180,11 @@ public class ListaEnlazada<T> implements Secuencia<T> {
 
         public T anterior() {
             Nodo nodo = primero; 
-            for(int j = 0; j<indice; j++){
+            for(int j = 0; j<indice - 1; j++){
                 nodo = nodo.sig;
             }
             indice -= 1;
-            return nodo.prev.valor;
+            return nodo.valor;
         }
     }
 
