@@ -35,7 +35,7 @@ public class ListaEnlazada&lt;T&gt; implements Secuencia&lt;T&gt; {
 <span class="fc" id="L35">        Nodo primeroAnterior = this.primero; </span>
 <span class="fc bfc" id="L36" title="All 2 branches covered.">        if(this.longitud == 0){</span>
 <span class="fc" id="L37">            this.primero = nuevoNodo; </span>
-        }else{
+<span class="fc" id="L38">        }else{</span>
 <span class="fc" id="L39">          nuevoNodo.sig = primeroAnterior;</span>
 <span class="fc" id="L40">          primeroAnterior.prev = nuevoNodo; </span>
 <span class="fc" id="L41">          this.primero = nuevoNodo; </span>
@@ -49,7 +49,7 @@ public class ListaEnlazada&lt;T&gt; implements Secuencia&lt;T&gt; {
 <span class="fc" id="L49">        Nodo actual = this.primero;</span>
 <span class="fc bfc" id="L50" title="All 2 branches covered.">        if (this.longitud == 0) {</span>
 <span class="fc" id="L51">           this.primero = nuevo;</span>
-        } else {
+<span class="fc" id="L52">        } else {</span>
 <span class="fc bfc" id="L53" title="All 2 branches covered.">           while (actual.sig != null) {</span>
 <span class="fc" id="L54">                actual = actual.sig;</span>
            }
@@ -79,7 +79,7 @@ public class ListaEnlazada&lt;T&gt; implements Secuencia&lt;T&gt; {
 <span class="fc" id="L79">        Nodo prev = actual.prev;</span>
 <span class="fc bfc" id="L80" title="All 4 branches covered.">        if(i == 0 &amp;&amp; this.longitud==1){</span>
 <span class="fc" id="L81">            this.primero = null; </span>
-        }
+<span class="fc" id="L82">        }</span>
 <span class="pc bpc" id="L83" title="1 of 4 branches missed.">        else if(i == 0 &amp;&amp; this.longitud&gt;1){</span>
 <span class="fc" id="L84">            sig.prev = null; </span>
 <span class="fc" id="L85">            this.primero = sig;</span>
@@ -88,7 +88,7 @@ public class ListaEnlazada&lt;T&gt; implements Secuencia&lt;T&gt; {
 <span class="fc" id="L88">                prev = actual.prev;</span>
 <span class="fc" id="L89">                actual = actual.sig;</span>
             }
-        }else{
+<span class="fc" id="L91">        }else{</span>
 <span class="fc bfc" id="L92" title="All 2 branches covered.">            for(int j = 0; j&lt;i; j++){</span>
 <span class="fc" id="L93">                actual = actual.sig;</span>
             }
@@ -116,14 +116,14 @@ public class ListaEnlazada&lt;T&gt; implements Secuencia&lt;T&gt; {
 <span class="fc" id="L116">            Nodo prev = actual.prev;</span>
 <span class="pc bpc" id="L117" title="1 of 4 branches missed.">            if(j == indice &amp;&amp; j == this.longitud-1){</span>
 <span class="nc" id="L118">                prev.sig = nuevoNodo; </span>
-<span class="fc bfc" id="L119" title="All 2 branches covered.">            }else if(j == indice){</span>
+<span class="pc bfc" id="L119" title="All 2 branches covered.">            }else if(j == indice){</span>
 <span class="fc" id="L120">                sig = actual.sig; </span>
 <span class="fc" id="L121">                actual = nuevoNodo;</span>
 <span class="fc" id="L122">                nuevoNodo.prev = prev;</span>
 <span class="fc" id="L123">                nuevoNodo.sig = sig;</span>
 <span class="fc" id="L124">                prev.sig = nuevoNodo;</span>
 <span class="fc" id="L125">                sig.prev = nuevoNodo; </span>
-            }else{
+<span class="fc" id="L126">            }else{</span>
 <span class="fc" id="L127">                actual = actual.sig;</span>
             }
         }
@@ -152,40 +152,41 @@ public class ListaEnlazada&lt;T&gt; implements Secuencia&lt;T&gt; {
 <span class="fc" id="L152">        return string.toString(); </span>
     }
 
-<span class="fc" id="L155">    private class ListaIterador implements Iterador&lt;T&gt; {</span>
-    	int indice; 
-        Nodo ultimo; 
+    private class ListaIterador implements Iterador&lt;T&gt; {
+    	Nodo prev; 
+        Nodo act;  
+
+<span class="fc" id="L159">        public ListaIterador(){</span>
+<span class="fc" id="L160">            this.prev = null; </span>
+<span class="fc" id="L161">            this.act = primero; </span>
+<span class="fc" id="L162">        }</span>
 
         public boolean haySiguiente() {
-<span class="fc bfc" id="L160" title="All 2 branches covered.">            return indice != longitud; </span>
+<span class="fc bfc" id="L165" title="All 2 branches covered.">            return this.act != null; </span>
         }
         
         public boolean hayAnterior() {
-<span class="pc bpc" id="L164" title="1 of 4 branches missed.">            return indice&gt;0 &amp;&amp; (indice != longitud+1);</span>
+<span class="fc bfc" id="L169" title="All 2 branches covered.">            return this.prev != null; </span>
         }
 
         public T siguiente() {
-<span class="fc" id="L168">            Nodo nodo = primero; </span>
-<span class="fc bfc" id="L169" title="All 2 branches covered.">            for(int j = 0; j&lt;indice; j++){</span>
-<span class="fc" id="L170">                nodo = nodo.sig;</span>
-            }
-<span class="fc" id="L172">            indice += 1;</span>
-<span class="fc" id="L173">            return nodo.valor;</span>
+<span class="fc" id="L173">            Nodo actual = this.act;</span>
+<span class="fc" id="L174">            this.prev = this.act;</span>
+<span class="fc" id="L175">            this.act = this.act.sig;</span>
+<span class="fc" id="L176">            return actual.valor;</span>
         }
         
 
         public T anterior() {
-<span class="fc" id="L178">            Nodo nodo = primero; </span>
-<span class="fc bfc" id="L179" title="All 2 branches covered.">            for(int j = 0; j&lt;indice - 1; j++){</span>
-<span class="fc" id="L180">                nodo = nodo.sig;</span>
-            }
-<span class="fc" id="L182">            indice -= 1;</span>
-<span class="fc" id="L183">            return nodo.valor;</span>
+<span class="fc" id="L181">            Nodo actual = this.prev;</span>
+<span class="fc" id="L182">            this.act = this.prev;</span>
+<span class="fc" id="L183">            this.prev = this.prev.prev;</span>
+<span class="fc" id="L184">            return actual.valor;</span>
         }
     }
 
     public Iterador&lt;T&gt; iterador() {
-<span class="fc" id="L188">	    return new ListaIterador();</span>
+<span class="fc" id="L189">	    return new ListaIterador();</span>
     }
 
 }

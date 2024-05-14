@@ -153,34 +153,35 @@ public class ListaEnlazada<T> implements Secuencia<T> {
     }
 
     private class ListaIterador implements Iterador<T> {
-    	int indice; 
-        Nodo ultimo; 
+    	Nodo prev; 
+        Nodo act;  
+
+        public ListaIterador(){
+            this.prev = null; 
+            this.act = primero; 
+        }
 
         public boolean haySiguiente() {
-            return indice != longitud; 
+            return this.act != null; 
         }
         
         public boolean hayAnterior() {
-            return indice>0 && (indice != longitud+1);
+            return this.prev != null; 
         }
 
         public T siguiente() {
-            Nodo nodo = primero; 
-            for(int j = 0; j<indice; j++){
-                nodo = nodo.sig;
-            }
-            indice += 1;
-            return nodo.valor;
+            Nodo actual = this.act;
+            this.prev = this.act;
+            this.act = this.act.sig;
+            return actual.valor;
         }
         
 
         public T anterior() {
-            Nodo nodo = primero; 
-            for(int j = 0; j<indice - 1; j++){
-                nodo = nodo.sig;
-            }
-            indice -= 1;
-            return nodo.valor;
+            Nodo actual = this.prev;
+            this.act = this.prev;
+            this.prev = this.prev.prev;
+            return actual.valor;
         }
     }
 
