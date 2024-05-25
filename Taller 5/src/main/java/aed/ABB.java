@@ -30,15 +30,15 @@ public class ABB<T extends Comparable<T>> implements Conjunto<T> {
 
     public T minimo(){
        Nodo nodo = this.raiz;  
-       while(nodo != null){
-        nodo = this.raiz.izq;
+       while(nodo.izq != null){
+        nodo = nodo.izq;
        }
        return nodo.val; 
     }
 
     public T maximo(){
        Nodo nodo = this.raiz;  
-       while(nodo != null){
+       while(nodo.der != null){
         nodo = this.raiz.der;
        }
        return nodo.val; 
