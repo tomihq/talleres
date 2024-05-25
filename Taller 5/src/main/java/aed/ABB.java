@@ -39,7 +39,7 @@ public class ABB<T extends Comparable<T>> implements Conjunto<T> {
     public T maximo(){
        Nodo nodo = this.raiz;  
        while(nodo.der != null){
-        nodo = this.raiz.der;
+        nodo = nodo.der;
        }
        return nodo.val; 
     }
@@ -98,7 +98,63 @@ public class ABB<T extends Comparable<T>> implements Conjunto<T> {
     }
 
     public void eliminar(T elem){
-        throw new UnsupportedOperationException("No implementada aun");
+        Nodo nodo = this.raiz;
+        Nodo padre = null;
+        boolean borrado = false;
+        //Si es la raiz y no tiene hijos. 
+        if (elem.compareTo(nodo.val) == 0 && nodo.der == null && nodo.izq == null) {
+            this.raiz = null;
+            this.cardinal -= 1;
+            return;
+        }
+
+        while(nodo != null && !borrado){
+            if(elem.compareTo(nodo.val)>0){
+                padre = nodo; //guardo anterior
+                nodo = nodo.der;
+            }else if(elem.compareTo(nodo.val)<0){
+                padre = nodo; //guardo el anterior
+                nodo = nodo.izq;
+            }else{
+                //si es igual y tiene algun hijo, entonces reemplazo el hijo por el 
+                if(nodo.der == null || nodo.izq == null){
+                    //Guardo alguno de los hijos del nodo.
+                    Nodo hijo = nodo.izq != null ? nodo.izq : nodo.der;
+
+                   //Si tiene un hijo siendo raiz.
+                    if (padre == null) {
+                        this.raiz = hijo; // El nodo a eliminar es la raíz. Por lo tanto el unico hijo que tiene pasa a ser raiz.
+                    } else if (padre.izq == nodo) { //Si el nodo a eliminar no es la raiz, entonces solo hago el swap
+                        padre.izq = hijo;
+                    } else {
+                        padre.der = hijo;
+                    }
+                    this.cardinal-=1;
+                    borrado = true; 
+                }else{
+                   Nodo nodoAct = nodo;
+                   Nodo predecesorInmediato = nodoAct.izq;
+
+                   //Busco el predecesor inmediato (el mas grande de los chiquitos)
+                   while(predecesorInmediato.der != null){
+                    nodoAct = predecesorInmediato;
+                    predecesorInmediato = predecesorInmediato.der;
+                   }
+
+                   //nodoAct al final es el anterior al ultimo mas grande de los chiquitos.
+                   nodo.val = predecesorInmediato.val;
+                   
+                   if(nodoAct != nodo){
+                    nodoAct.der = predecesorInmediato.izq; 
+                   }else{
+                    nodoAct.izq = predecesorInmediato.izq;
+                   }
+                   
+                    this.cardinal -= 1;
+                    borrado = true;
+                }
+            }
+        }
     }
 
     public String toString(){
