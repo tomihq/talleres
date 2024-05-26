@@ -47,7 +47,6 @@ public class ABB<T extends Comparable<T>> implements Conjunto<T> {
     public void insertar(T elem){
        Nodo nodo = this.raiz;
        Nodo nuevoNodo = new Nodo(elem);
-       boolean insertado = false; 
        if(this.pertenece(elem)) return; 
        
        if(nodo == null){
@@ -56,45 +55,41 @@ public class ABB<T extends Comparable<T>> implements Conjunto<T> {
             return; 
        }
     
-       while(nodo != null && !insertado){
-            if(nuevoNodo.val.compareTo(nodo.val) > 0){
-                if(nodo.der == null){
-                    nodo.der = nuevoNodo;
-                    nuevoNodo.arriba = nodo;
-                    insertado = true; 
-                    this.cardinal += 1;
-                }else {
-                    nodo = nodo.der;
-                }
-            }else{
-                if(nodo.izq == null){
-                     nodo.izq = nuevoNodo;
-                     nuevoNodo.arriba = nodo;
-                     insertado = true; 
-                     this.cardinal +=1;
-                }else{
-                    nodo = nodo.izq;
-                }
-            }
-           }
-       
-
+       this.insertarRecursivo(nuevoNodo, nodo);
       
     }
 
-    public boolean pertenece(T elem){
-        Nodo nodo = this.raiz; 
-        boolean encontrado = false; 
-        while(nodo != null && !encontrado){
-            if(elem.compareTo(nodo.val)==0){
-                encontrado = true; 
-            }else if(elem.compareTo(nodo.val)<0){
-                nodo = nodo.izq;
-            }else {
-                nodo = nodo.der;
-            }
+    public void insertarRecursivo(Nodo nuevoNodo, Nodo arbol){
+        if(arbol == null) return; 
+        if(nuevoNodo.val.compareTo(arbol.val) > 0){
+            if(arbol.der == null) arbol.der = insertarNodo(nuevoNodo, arbol, arbol.der);
+            else insertarRecursivo(nuevoNodo, arbol.der);
+        }else{
+            if(arbol.izq == null) arbol.izq = insertarNodo(nuevoNodo, arbol, arbol.izq);
+            else insertarRecursivo(nuevoNodo, arbol.izq);
         }
+
+    }
+
+    public Nodo insertarNodo(Nodo nuevoNodo, Nodo arbol, Nodo arbolLado){
+        arbolLado = nuevoNodo;
+        nuevoNodo.arriba = arbol;
+        this.cardinal += 1;
+        return nuevoNodo;
+    }
+
+    public boolean pertenece(T elem){
+        Nodo nodo = this.raiz;
+        boolean encontrado = perteneceRecursivo(elem, nodo); 
         return encontrado; 
+    }
+
+    public boolean perteneceRecursivo(T elem, Nodo arbol){
+        if(arbol == null) return false; 
+        if(elem.compareTo(arbol.val)==0) return true; 
+        else if(elem.compareTo(arbol.val)<0) return perteneceRecursivo(elem, arbol.izq);
+        else return perteneceRecursivo(elem, arbol.der);
+        
     }
 
     public void eliminar(T elem){
@@ -115,7 +110,7 @@ public class ABB<T extends Comparable<T>> implements Conjunto<T> {
             }else if(elem.compareTo(nodo.val)<0){
                 padre = nodo; //guardo el anterior
                 nodo = nodo.izq;
-            }else{
+            }else{ //aca ya tengo garantizado que encontre el nodo a eliminar
                 //si es igual y tiene algun hijo, entonces reemplazo el hijo por el 
                 if(nodo.der == null || nodo.izq == null){
                     //Guardo alguno de los hijos del nodo.
@@ -163,6 +158,9 @@ public class ABB<T extends Comparable<T>> implements Conjunto<T> {
 
     private class ABB_Iterador implements Iterador<T> {
         private Nodo _actual;
+
+        public ABB_Iterador(){
+        }
 
         public boolean haySiguiente() {            
             throw new UnsupportedOperationException("No implementada aun");
