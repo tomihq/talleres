@@ -35,7 +35,7 @@ public class ABB<T extends Comparable<T>> implements Conjunto<T> {
 
     public T minimoRecursivo(Nodo arbol){
         if(arbol.izq == null) return arbol.val;
-        return maximoRecursivo(arbol.izq);
+        return minimoRecursivo(arbol.izq);
     }
 
     public T maximo(){
@@ -46,6 +46,23 @@ public class ABB<T extends Comparable<T>> implements Conjunto<T> {
     public T maximoRecursivo(Nodo arbol){
         if(arbol.der == null) return arbol.val;
         return maximoRecursivo(arbol.der);
+    }
+
+    //requiere: elem pertenece al arbol en algun nodo.
+    public Nodo hallarNodoSiguiente(Nodo nodo) {
+        if (nodo == null) return null;
+        if (nodo.der != null) return hallarNodoConValorMinimo(nodo.der);
+        return encontrarPadreSiguiente(nodo);
+    }
+
+    public Nodo hallarNodoConValorMinimo(Nodo arbol){
+        if(arbol.izq == null) return arbol; 
+        else return hallarNodoConValorMinimo(arbol.izq);
+    } 
+
+    private Nodo encontrarPadreSiguiente(Nodo nodo) {
+        if (nodo == null || nodo.arriba == null || nodo == nodo.arriba.izq) return nodo.arriba;
+        return encontrarPadreSiguiente(nodo.arriba);
     }
 
     public void insertar(T elem){
@@ -154,21 +171,38 @@ public class ABB<T extends Comparable<T>> implements Conjunto<T> {
     }
 
     public String toString(){
-        throw new UnsupportedOperationException("No implementada aun");
+        Iterador<T> iterador = new ABB_Iterador();
+        StringBuffer buffer = new StringBuffer();
+        buffer.append("{");
+        while(iterador.haySiguiente()){
+            buffer.append(iterador.siguiente());
+            if(iterador.haySiguiente()){
+                buffer.append(",");
+            }
+        }
+        buffer.append("}");
+        return buffer.toString();
     }
 
     private class ABB_Iterador implements Iterador<T> {
         private Nodo _actual;
+        private Nodo _prev; 
 
         public ABB_Iterador(){
+            this._prev = null; 
+            this._actual = hallarNodoConValorMinimo(raiz);
         }
 
         public boolean haySiguiente() {            
-            throw new UnsupportedOperationException("No implementada aun");
+            return this._actual != null; 
         }
     
         public T siguiente() {
-            throw new UnsupportedOperationException("No implementada aun");
+            Nodo actualViejo = this._actual;
+            this._prev = actualViejo;
+            Nodo siguiente = hallarNodoSiguiente(this._actual);
+            this._actual = siguiente;
+            return actualViejo.val;
         }
     }
 
