@@ -29,19 +29,23 @@ public class ABB<T extends Comparable<T>> implements Conjunto<T> {
     }
 
     public T minimo(){
-       Nodo nodo = this.raiz;  
-       while(nodo.izq != null){
-        nodo = nodo.izq;
-       }
-       return nodo.val; 
+        T res = minimoRecursivo(this.raiz);
+        return res;
+    }
+
+    public T minimoRecursivo(Nodo arbol){
+        if(arbol.izq == null) return arbol.val;
+        return maximoRecursivo(arbol.izq);
     }
 
     public T maximo(){
-       Nodo nodo = this.raiz;  
-       while(nodo.der != null){
-        nodo = nodo.der;
-       }
-       return nodo.val; 
+       T res = maximoRecursivo(this.raiz);
+       return res;
+    }
+
+    public T maximoRecursivo(Nodo arbol){
+        if(arbol.der == null) return arbol.val;
+        return maximoRecursivo(arbol.der);
     }
 
     public void insertar(T elem){
@@ -89,13 +93,11 @@ public class ABB<T extends Comparable<T>> implements Conjunto<T> {
         if(elem.compareTo(arbol.val)==0) return true; 
         else if(elem.compareTo(arbol.val)<0) return perteneceRecursivo(elem, arbol.izq);
         else return perteneceRecursivo(elem, arbol.der);
-        
     }
 
     public void eliminar(T elem){
         Nodo nodo = this.raiz;
         Nodo padre = null;
-        boolean borrado = false;
         //Si es la raiz y no tiene hijos. 
         if (elem.compareTo(nodo.val) == 0 && nodo.der == null && nodo.izq == null) {
             this.raiz = null;
@@ -103,53 +105,52 @@ public class ABB<T extends Comparable<T>> implements Conjunto<T> {
             return;
         }
 
-        while(nodo != null && !borrado){
-            if(elem.compareTo(nodo.val)>0){
-                padre = nodo; //guardo anterior
-                nodo = nodo.der;
-            }else if(elem.compareTo(nodo.val)<0){
-                padre = nodo; //guardo el anterior
-                nodo = nodo.izq;
-            }else{ //aca ya tengo garantizado que encontre el nodo a eliminar
-                //si es igual y tiene algun hijo, entonces reemplazo el hijo por el 
-                if(nodo.der == null || nodo.izq == null){
-                    //Guardo alguno de los hijos del nodo.
-                    Nodo hijo = nodo.izq != null ? nodo.izq : nodo.der;
+        eliminarRecursivo(elem, padre, nodo);
+    }
 
-                   //Si tiene un hijo siendo raiz.
-                    if (padre == null) {
-                        this.raiz = hijo; // El nodo a eliminar es la raíz. Por lo tanto el unico hijo que tiene pasa a ser raiz.
-                    } else if (padre.izq == nodo) { //Si el nodo a eliminar no es la raiz, entonces solo hago el swap
-                        padre.izq = hijo;
-                    } else {
-                        padre.der = hijo;
-                    }
-                    this.cardinal-=1;
-                    borrado = true; 
-                }else{
-                   Nodo nodoAct = nodo;
-                   Nodo predecesorInmediato = nodoAct.izq;
+    public void eliminarRecursivo(T elem, Nodo padre, Nodo arbol){
+        if(arbol == null) return; 
+        if(elem.compareTo(arbol.val) > 0) eliminarRecursivo(elem, arbol, arbol.der);
+        else if(elem.compareTo(arbol.val)<0) eliminarRecursivo(elem, arbol, arbol.izq);
+        else {
+            if(arbol.der == null || arbol.izq == null){
+                //Guardo alguno de los hijos del nodo.
+                Nodo hijo = arbol.izq != null ? arbol.izq : arbol.der;
 
-                   //Busco el predecesor inmediato (el mas grande de los chiquitos)
-                   while(predecesorInmediato.der != null){
+                //Si tiene un hijo siendo raiz.
+                if (padre == null) {
+                    this.raiz = hijo; // El nodo a eliminar es la raíz. Por lo tanto el unico hijo que tiene pasa a ser raiz.
+                } else if (padre.izq == arbol) { //Si el nodo a eliminar no es la raiz, entonces solo hago el swap
+                    padre.izq = hijo;
+                } else {
+                    padre.der = hijo;
+                }
+                this.cardinal--;
+            }else{
+                Nodo nodoAct = arbol;
+                Nodo predecesorInmediato = nodoAct.izq;
+
+                //Busco el predecesor inmediato (el mas grande de los chiquitos)
+                while(predecesorInmediato.der != null){
                     nodoAct = predecesorInmediato;
                     predecesorInmediato = predecesorInmediato.der;
-                   }
-
-                   //nodoAct al final es el anterior al ultimo mas grande de los chiquitos.
-                   nodo.val = predecesorInmediato.val;
-                   
-                   if(nodoAct != nodo){
-                    nodoAct.der = predecesorInmediato.izq; 
-                   }else{
-                    nodoAct.izq = predecesorInmediato.izq;
-                   }
-                   
-                    this.cardinal -= 1;
-                    borrado = true;
                 }
+
+                //nodoAct al final es el anterior al ultimo mas grande de los chiquitos.
+                arbol.val = predecesorInmediato.val;
+                
+                if(nodoAct != arbol){
+                    nodoAct.der = predecesorInmediato.izq; 
+                }else{
+                    nodoAct.izq = predecesorInmediato.izq;
+                }
+            
+                this.cardinal--;
             }
         }
+        return; 
+        
+
     }
 
     public String toString(){
