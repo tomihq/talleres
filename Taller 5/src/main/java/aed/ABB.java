@@ -51,20 +51,20 @@ public class ABB<T extends Comparable<T>> implements Conjunto<T> {
     //requiere: elem pertenece al arbol en algun nodo (el iterador manda el minimo, porque así lo decidí). Hago búsqueda in-order, de más chico al más grande! Aprovecho que es un ABB.
     public Nodo hallarNodoSiguiente(Nodo nodo) {
         if (nodo == null) return null;
-        if (nodo.der != null) return hallarNodoConValorMinimo(nodo.der);
-        return encontrarPadreSiguiente(nodo);
+        if (nodo.der != null) return hallarNodoConMinimo(nodo.der);
+        return hallarSiguienteNodoPadre(nodo);
     }
 
-    public Nodo hallarNodoConValorMinimo(Nodo arbol){
-        if(arbol.izq == null) return arbol; 
-        else return hallarNodoConValorMinimo(arbol.izq);
-    } 
-
-    private Nodo encontrarPadreSiguiente(Nodo nodo) {
+    private Nodo hallarSiguienteNodoPadre(Nodo nodo) {
         Nodo nodoPadre = nodo.arriba;
         if (nodo == null || nodoPadre == null || nodo == nodoPadre.izq) return nodoPadre;
-        return encontrarPadreSiguiente(nodoPadre);
+        return hallarSiguienteNodoPadre(nodoPadre);
     }
+
+    public Nodo hallarNodoConMinimo(Nodo arbol){
+        if(arbol.izq == null) return arbol; 
+        else return hallarNodoConMinimo(arbol.izq);
+    } 
 
     public void insertar(T elem){
        Nodo nodo = this.raiz;
@@ -191,7 +191,7 @@ public class ABB<T extends Comparable<T>> implements Conjunto<T> {
 
         public ABB_Iterador(){
             this._prev = null; 
-            this._actual = hallarNodoConValorMinimo(raiz);
+            this._actual = hallarNodoConMinimo(raiz);
         }
 
         public boolean haySiguiente() {            
