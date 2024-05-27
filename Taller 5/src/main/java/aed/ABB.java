@@ -49,15 +49,15 @@ public class ABB<T extends Comparable<T>> implements Conjunto<T> {
     }
 
     //requiere: elem pertenece al arbol en algun nodo (el iterador manda el minimo, porque así lo decidí). Hago búsqueda in-order, de más chico al más grande! Aprovecho que es un ABB.
-    public Nodo hallarNodoSiguiente(Nodo nodo) {
-        if (nodo == null) return null;
-        if (nodo.der != null) return hallarNodoConMinimo(nodo.der);
-        return hallarSiguienteNodoPadre(nodo);
+    public Nodo hallarNodoSiguiente(Nodo arbol) {
+        if (arbol == null) return null;
+        if (arbol.der != null) return hallarNodoConMinimo(arbol.der);
+        return hallarSiguienteNodoPadre(arbol);
     }
 
-    private Nodo hallarSiguienteNodoPadre(Nodo nodo) {
-        Nodo nodoPadre = nodo.arriba;
-        if (nodo == null || nodoPadre == null || nodo == nodoPadre.izq) return nodoPadre;
+    private Nodo hallarSiguienteNodoPadre(Nodo arbol) {
+        Nodo nodoPadre = arbol.arriba;
+        if (arbol == null || nodoPadre == null || arbol == nodoPadre.izq) return nodoPadre;
         return hallarSiguienteNodoPadre(nodoPadre);
     }
 
