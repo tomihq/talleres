@@ -48,7 +48,7 @@ public class ABB<T extends Comparable<T>> implements Conjunto<T> {
         return maximoRecursivo(arbol.der);
     }
 
-    //requiere: elem pertenece al arbol en algun nodo. Hago búsqueda in-order, de más chico al más grande! Aprovecho que es un ABB.
+    //requiere: elem pertenece al arbol en algun nodo (el iterador manda el minimo, porque así lo decidí). Hago búsqueda in-order, de más chico al más grande! Aprovecho que es un ABB.
     public Nodo hallarNodoSiguiente(Nodo nodo) {
         if (nodo == null) return null;
         if (nodo.der != null) return hallarNodoConValorMinimo(nodo.der);
